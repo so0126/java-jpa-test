@@ -1,0 +1,6 @@
+# src/main/resources/application.properties.example
+# 이 파일을 복사해서 application-local.properties를 만드신 후, 본인의 정보를 입력하세요.
+spring.datasource.url=jdbc:postgresql://localhost:5432/DB이름
+spring.datasource.username=유저이름
+spring.datasource.password=여기에비밀번호를넣으세요
+spring.datasource.driver-class-name=org.postgresql.Driver

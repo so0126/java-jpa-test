@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    @Transactional
     public Long save(MemberSaveRequest requestDto){
         return memberRepository.save(requestDto.toEntity()).getId();
     }
