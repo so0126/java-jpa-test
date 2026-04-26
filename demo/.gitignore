@@ -12,6 +12,9 @@ gen/
 .settings/
 bin/
 
+lauch.json
+settings.json
+
 ### VS Code ###
 .vscode/
 
