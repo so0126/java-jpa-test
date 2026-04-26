@@ -31,7 +31,7 @@ public class MemberService {
     public Long update(Long id, MemberSaveRequest requestDto){
         Member member = memberRepository.findById(id)
             .orElseThrow(()->new IllegalArgumentException("해당 사용자가 없습니다. id="+id));
-        member.updateName(requestDto.getName());
+        member.updateName(requestDto.name());
         return id;
     }
     
