@@ -1,0 +1,37 @@
+### JetBrains (IntelliJ) ###
+*.iml
+.idea/
+out/
+gen/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+bin/
+
+### VS Code ###
+.vscode/
+
+### Build Tools (Maven/Gradle) ###
+target/
+build/
+.gradle/
+bin/
+
+### Log files ###
+*.log
+logs/
+
+### Sensitive Info (Security) ###
+# 로컬 설정이나 API 키가 포함된 파일은 제외 권장
+application-local.properties
+application-local.yml
+*.keystore
+*.jks
+
+### OS Specific ###
+.DS_Store
+Thumbs.db

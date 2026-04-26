@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+
+<h2>게시글 작성</h2>
+<input type="text" id="title" placeholder="제목">
+<br><br>
+<textarea id="content" placeholder="내용"></textarea>
+<br><br>
+<button onclick="createPost()">등록</button>
+
+<hr>
+
+<h2>게시글 목록</h2>
+<ul id="postList"></ul>
+
+<script>
+const API = "http://localhost:8080/posts";
+
+function createPost() {
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
+
+    fetch(API, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ title, content })
+    })
+    .then(res => res.json())
+    .then(() => {
+        loadPosts();
+    });
+}
+
+function loadPosts() {
+    fetch(API)
+    .then(res => res.json())
+    .then(data => {
+        const list = document.getElementById("postList");
+        list.innerHTML = "";
+
+        data.forEach(post => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <b>${post.title}</b> - ${post.content}
+                <button onclick="deletePost(${post.id})">삭제</button>
+            `;
+            list.appendChild(li);
+        });
+    });
+}
+
+function deletePost(id) {
+    fetch(API + "/" + id, {
+        method: "DELETE"
+    })
+    .then(() => loadPosts());
+}
+
+loadPosts();
+</script>
+
+</body>
+</html>
